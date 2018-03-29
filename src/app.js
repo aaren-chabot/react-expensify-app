@@ -8,18 +8,10 @@ import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
 
 import 'normalize.css/normalize.css';
+import 'react-dates/lib/css/_datepicker.css';
 import './styles/styles.scss';
 
 const store = configStore();
-
-store.subscribe(() => {
-  const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-});
-
-store.dispatch(addExpense({ description: 'Water bill', amount: 4500 }));
-store.dispatch(addExpense({ description: 'Gas bill', createdAt: 1000 }));
-store.dispatch(addExpense({ description: 'Rent', amount: 109500 }));
 
 // Set up store as a Provider - gives all comps access to the store through connect
 const jsx = (
